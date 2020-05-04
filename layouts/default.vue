@@ -33,32 +33,35 @@ html {
   margin: 0;
 }
 
-.button--green {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #3b8070;
-  color: #3b8070;
+body {
+  min-width: 320px;
+}
+
+a {
   text-decoration: none;
-  padding: 10px 30px;
 }
 
-.button--green:hover {
-  color: #fff;
-  background-color: #3b8070;
+a:hover {
+  text-decoration: underline;
 }
 
-.button--grey {
-  display: inline-block;
-  border-radius: 4px;
-  border: 1px solid #35495e;
-  color: #35495e;
-  text-decoration: none;
-  padding: 10px 30px;
-  margin-left: 15px;
+li {
+  line-height: 1.5;
 }
 
-.button--grey:hover {
-  color: #fff;
-  background-color: #35495e;
+@media screen and (max-width: 450px) {
+  html {
+    font-size: 14px;
+  }
+
+  ul {
+    padding-left: 1.5rem;
+  }
+}
+
+@media screen and (max-width: 390px) {
+  html {
+    font-size: 12px;
+  }
 }
 </style>
