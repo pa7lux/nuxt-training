@@ -37,6 +37,12 @@ export default {
   font-size: 32px;
 }
 
+@media screen and (max-width: 768px) {
+  .header {
+    padding: 20px 40px;
+  }
+}
+
 @media screen and (max-width: 450px) {
   .header__logo {
     font-size: 24px;

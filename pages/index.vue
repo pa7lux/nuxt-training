@@ -19,16 +19,62 @@
       <h3 class="container__subheader">Задание</h3>
       <div class="container__text" v-html="lesson.hometask"></div>
     </panel>
+
+    <!-- ВОТ ЗДЕСЬ НАЧИНАЕТСЯ НОВОЕ -->
+    <overlay>
+      <pop-up :theme="'dark'">
+        <form class="question-form">
+          <label class="input">
+            Имя:
+            <input
+              type="text"
+              placeholder="Василий Иванов"
+              name="name"
+              required
+            />
+          </label>
+          <label class="input">
+            Email:
+            <input
+              type="email"
+              placeholder="hello@iamyouruser.com"
+              name="email"
+              required
+            />
+          </label>
+          <label class="textarea question-form__textarea">
+            Сообщение:
+            <textarea
+              placeholder="Ваш текст"
+              name="message"
+              required
+            ></textarea>
+          </label>
+          <nxt-button
+            class="question-form__button"
+            type="submit"
+            :theme="'light'"
+            >Отправить</nxt-button
+          >
+        </form>
+      </pop-up>
+    </overlay>
   </div>
 </template>
 
 <script>
 import Panel from '@/components/Panel';
 import VideoIframe from '@/components/VideoIframe';
+import Overlay from '@/components/ui/Overlay';
+import PopUp from '@/components/PopUp';
+import Button from '@/components/ui/Button';
 export default {
   components: {
     panel: Panel,
     'video-iframe': VideoIframe,
+    overlay: Overlay,
+    'pop-up': PopUp,
+    'nxt-button': Button,
   },
   data() {
     return {
@@ -161,6 +207,44 @@ export default {
 
 .container__subheader {
   margin: 20px 0;
+}
+
+/*  СТИЛИ ФОРМЫ */
+
+.question-form {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 20px;
+}
+
+.input input {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  border: 1px solid black;
+  height: 40px;
+  padding: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.textarea textarea {
+  display: block;
+  width: 100%;
+  min-height: 150px;
+  margin-top: 10px;
+  border: 1px solid black;
+  padding: 5px;
+  font-size: 14px;
+  box-sizing: border-box;
+}
+
+.question-form__textarea {
+  grid-column: span 2;
+}
+
+.question-form__button {
+  grid-column: span 2;
 }
 
 @media screen and (max-width: 450px) {

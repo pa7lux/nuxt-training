@@ -2,11 +2,17 @@
   <nav class="menu">
     <nuxt-link to="/" class="menu__link">Главная</nuxt-link>
     <nuxt-link to="/about" class="menu__link">О проекте</nuxt-link>
+    <nxt-button class="menu__button" :theme="'dark'">Задать вопрос</nxt-button>
   </nav>
 </template>
 
 <script>
-export default {};
+import Button from '@/components/ui/Button';
+export default {
+  components: {
+    'nxt-button': Button,
+  },
+};
 </script>
 
 <style scoped>
@@ -16,6 +22,10 @@ export default {};
 
 .menu__link:last-of-type {
   margin-right: 0;
+}
+
+.menu__button {
+  margin-left: 20px;
 }
 
 @media screen and (max-width: 768px) {
@@ -28,6 +38,10 @@ export default {};
     line-height: 2;
     margin-right: 0;
   }
+
+  .menu__button {
+    margin-left: 0;
+  }
 }
 
 @media screen and (max-width: 390px) {
@@ -39,6 +53,10 @@ export default {};
   .menu__link {
     line-height: 2;
     margin-right: 20px;
+  }
+
+  .menu__button {
+    margin-left: 20px;
   }
 }
 </style>
