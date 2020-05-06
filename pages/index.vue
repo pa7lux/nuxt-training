@@ -19,71 +19,21 @@
       <h3 class="container__subheader">Задание</h3>
       <div class="container__text" v-html="lesson.hometask"></div>
     </panel>
-
-    <!-- ВОТ ЗДЕСЬ НАЧИНАЕТСЯ НОВОЕ -->
-    <overlay v-if="popupShown">
-      <pop-up :theme="'dark'">
-        <form class="question-form">
-          <label class="input">
-            Имя:
-            <input
-              type="text"
-              placeholder="Василий Иванов"
-              name="name"
-              required
-            />
-          </label>
-          <label class="input">
-            Email:
-            <input
-              type="email"
-              placeholder="hello@iamyouruser.com"
-              name="email"
-              required
-            />
-          </label>
-          <label class="textarea question-form__textarea">
-            Сообщение:
-            <textarea
-              placeholder="Ваш текст"
-              name="message"
-              required
-            ></textarea>
-          </label>
-          <nxt-button
-            class="question-form__button"
-            type="submit"
-            :theme="'light'"
-            >Отправить</nxt-button
-          >
-        </form>
-      </pop-up>
-    </overlay>
   </div>
 </template>
 
 <script>
 import Panel from '@/components/Panel';
 import VideoIframe from '@/components/VideoIframe';
-import Overlay from '@/components/ui/Overlay';
-import PopUp from '@/components/PopUp';
-import Button from '@/components/ui/Button';
+
 export default {
   components: {
     panel: Panel,
     'video-iframe': VideoIframe,
-    overlay: Overlay,
-    'pop-up': PopUp,
-    'nxt-button': Button,
   },
-  methods: {
-    popupHandler() {
-      this.popupShown = !this.popupShown;
-    },
-  },
+
   data() {
     return {
-      popupShown: false,
       lessons: [
         {
           id: '1',
@@ -187,6 +137,47 @@ export default {
           hometask:
             '<p>посмотрите, как я изменил верстку нашего проекта в  ветке репозитория уже после окончания вебинара. Вы можете сопоставить изменения в разделе "commits" Гитхаба. Сделайте выводы у себя в блокноте.</p>',
         },
+        {
+          id: '3',
+          name: 'Стрим 3. Обработка событий во Vue и Nuxt',
+          video: 'https://www.youtube.com/embed/RDfiGspcI8o',
+          description:
+            '<p>Научились:</p><ul><li>настраивать обработчики событий через v-on и @ для элементов</li><li>описывать методы для обработки событий внутри компонента</li><li>передавать события между компонентами через $emit</li><li>поработали с событием submit и узнали о встроенной опции prevent для этого события</li><li>поработали с директивой v-model для связи модели данных с полями ввода</li><li>научились передавать дополнительные данные при $emit вторым параметром этой функции</li><li>использовали объект $event, встроенный во vue, для передачи .target.value поля ввода в качестве второго аргумента $emit</li></ul>',
+          links: [
+            {
+              id: '1',
+              url: 'https://ru.vuejs.org/v2/guide/events.html',
+              description: 'События во Vue',
+            },
+            {
+              id: '2',
+              url: 'https://ru.vuejs.org/v2/guide/forms.html',
+              description: 'Работа с формами во Vue',
+            },
+            {
+              id: '3',
+              url:
+                'https://medium.com/@modex13/vue-js-2-%D0%BF%D0%B5%D1%80%D0%B5%D0%B4%D0%B0%D1%87%D0%B0-%D0%B4%D0%B0%D0%BD%D0%BD%D1%8B%D1%85-%D0%BC%D0%B5%D0%B6%D0%B4%D1%83-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%B0%D0%BC%D0%B8-467383294847',
+              description:
+                'Статья про то, как можно передавать события между компонентами',
+            },
+            {
+              id: '4',
+              url:
+                'https://ru.vuejs.org/v2/guide/components.html#%D0%98%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D0%BD%D0%B8%D0%B5-v-model-%D0%BD%D0%B0-%D0%BA%D0%BE%D0%BC%D0%BF%D0%BE%D0%BD%D0%B5%D0%BD%D1%82%D0%B0%D1%85',
+              description: 'Использование v-model на компонентах',
+            },
+          ],
+          materials: [
+            {
+              id: '1',
+              url: 'https://github.com/pa7lux/nuxt-training/tree/stream-3',
+              description: 'Ссылка на ветку в репозитории',
+            },
+          ],
+          hometask:
+            '<p>Верстайте основные компоненты сайта "Рак лечится" по дизайну, соединяйте их друг с другом, описывайте события, которые можете.</p><p style="margin-top: 20px;">Чего не нужно делать, если не уверены:</p><ul><li>Создавать слайдеры (разберем отдельно vue-awesome-swiper)</li><li>Пытаться настроить навигицию с карточек в детальную статью (c этого начнем следующий стрим)</li></ul>',
+        },
       ],
     };
   },
@@ -213,44 +204,6 @@ export default {
 
 .container__subheader {
   margin: 20px 0;
-}
-
-/*  СТИЛИ ФОРМЫ */
-
-.question-form {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 20px;
-}
-
-.input input {
-  display: block;
-  width: 100%;
-  margin-top: 10px;
-  border: 1px solid black;
-  height: 40px;
-  padding: 5px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.textarea textarea {
-  display: block;
-  width: 100%;
-  min-height: 150px;
-  margin-top: 10px;
-  border: 1px solid black;
-  padding: 5px;
-  font-size: 14px;
-  box-sizing: border-box;
-}
-
-.question-form__textarea {
-  grid-column: span 2;
-}
-
-.question-form__button {
-  grid-column: span 2;
 }
 
 @media screen and (max-width: 450px) {

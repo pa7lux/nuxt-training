@@ -27,5 +27,6 @@ export default {
   padding: 5px;
   font-size: 14px;
   box-sizing: border-box;
+  font-family: inherit;
 }
 </style>
