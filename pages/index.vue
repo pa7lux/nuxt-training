@@ -21,7 +21,7 @@
     </panel>
 
     <!-- ВОТ ЗДЕСЬ НАЧИНАЕТСЯ НОВОЕ -->
-    <overlay>
+    <overlay v-if="popupShown">
       <pop-up :theme="'dark'">
         <form class="question-form">
           <label class="input">
@@ -76,8 +76,14 @@ export default {
     'pop-up': PopUp,
     'nxt-button': Button,
   },
+  methods: {
+    popupHandler() {
+      this.popupShown = !this.popupShown;
+    },
+  },
   data() {
     return {
+      popupShown: false,
       lessons: [
         {
           id: '1',

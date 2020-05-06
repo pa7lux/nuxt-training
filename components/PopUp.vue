@@ -1,6 +1,9 @@
 <template>
   <div class="popup">
-    <div :class="['close', `close_theme_${theme}`]"></div>
+    <div
+      :class="['close', `close_theme_${theme}`]"
+      @click="$emit('closeClick')"
+    ></div>
     <slot>Содержимое окна</slot>
   </div>
 </template>
