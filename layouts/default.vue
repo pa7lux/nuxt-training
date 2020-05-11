@@ -1,9 +1,9 @@
 <template>
   <div>
-    <main-header @btnClick="popupHandler" />
+    <main-header />
     <nuxt />
-    <overlay v-if="popupShown" @overlayClick="popupHandler" />
-    <pop-up v-if="popupShown" @closeClick="popupHandler" :theme="'dark'">
+    <overlay v-if="popupShown" @overlayClick="showPopUp" />
+    <pop-up v-if="popupShown" @closeClick="showPopUp" :theme="'dark'">
       <question-form />
     </pop-up>
   </div>
@@ -22,15 +22,15 @@ export default {
     'pop-up': PopUp,
     'question-form': QuestionForm,
   },
-  methods: {
-    popupHandler() {
-      this.popupShown = !this.popupShown;
+  computed: {
+    popupShown() {
+      return this.$store.getters['popup/getPopupShown'];
     },
   },
-  data() {
-    return {
-      popupShown: false,
-    };
+  methods: {
+    showPopUp() {
+      this.$store.commit('popup/togglePopUp');
+    },
   },
 };
 </script>

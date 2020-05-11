@@ -1,5 +1,8 @@
 <template>
-  <div :class="['card', { card_disabled: disabled }]">
+  <div
+    :class="['card', { card_disabled: disabled }]"
+    @click="$emit('cardClick')"
+  >
     <h2 class="card__title">{{ title }}</h2>
   </div>
 </template>

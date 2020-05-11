@@ -8,7 +8,7 @@
         погрузиться из-за простоты Vue. За несколько стримов рассказали основы,
         а дальше студенты с помощью наставника в командах делали проект.
       </p>
-      <nxt-button class="about__button" :theme="'light'"
+      <nxt-button @btnClick="showPopUp" class="about__button" :theme="'light'"
         >Напишите нам</nxt-button
       >
     </div>
@@ -20,6 +20,11 @@ import Button from '@/components/ui/Button';
 export default {
   components: {
     'nxt-button': Button,
+  },
+  methods: {
+    showPopUp() {
+      this.$store.commit('popup/togglePopUp');
+    },
   },
 };
 </script>

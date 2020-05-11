@@ -3,10 +3,7 @@
     <nuxt-link to="/" class="menu__link">Главная</nuxt-link>
     <nuxt-link to="/about" class="menu__link">О проекте</nuxt-link>
     <nuxt-link to="/streams" class="menu__link">Стримы</nuxt-link>
-    <nxt-button
-      @btnClick="$emit('btnClick')"
-      class="menu__button"
-      :theme="'dark'"
+    <nxt-button @btnClick="showPopUp" class="menu__button" :theme="'dark'"
       >Задать вопрос</nxt-button
     >
   </nav>
@@ -17,6 +14,11 @@ import Button from '@/components/ui/Button';
 export default {
   components: {
     'nxt-button': Button,
+  },
+  methods: {
+    showPopUp() {
+      this.$store.commit('popup/togglePopUp');
+    },
   },
 };
 </script>

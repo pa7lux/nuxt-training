@@ -4,7 +4,7 @@
       >Nuxt streams</nuxt-link
     >
     <h1 class="header__logo" v-else>Nuxt streams</h1>
-    <main-menu @btnClick="$emit('btnClick')" />
+    <main-menu />
   </header>
 </template>
 
