@@ -1,19 +1,37 @@
 <template>
-  <div class="index">
-    <div class="index__card-list">
-      <card v-for="card in lessons" :key="card.id" :title="card.name" />
-      <card :disabled="true" :title="'Скоро в эфире'" />
-      <card :disabled="true" :title="'Скоро в эфире'" />
-    </div>
+  <div class="container">
+    <panel v-for="lesson in lessons" :key="lesson.id" class="container__panel">
+      <h2 class="container__title">{{ lesson.name }}</h2>
+      <video-iframe :url="lesson.video" />
+      <div class="container__text" v-html="lesson.description"></div>
+      <h3 class="container__subheader">Полезные ссылки</h3>
+      <ul>
+        <li v-for="link in lesson.links" :key="link.id">
+          <a :href="link.url" target="_blank">{{ link.description }}</a>
+        </li>
+      </ul>
+      <h3 class="container__subheader">Материалы</h3>
+      <ul>
+        <li v-for="link in lesson.materials" :key="link.id">
+          <a :href="link.url" target="_blank">{{ link.description }}</a>
+        </li>
+      </ul>
+      <h3 class="container__subheader">Задание</h3>
+      <div class="container__text" v-html="lesson.hometask"></div>
+    </panel>
   </div>
 </template>
 
 <script>
-import Card from '@/components/Card';
+import Panel from '@/components/Panel';
+import VideoIframe from '@/components/VideoIframe';
+
 export default {
   components: {
-    card: Card,
+    panel: Panel,
+    'video-iframe': VideoIframe,
   },
+
   data() {
     return {
       lessons: [
@@ -167,11 +185,30 @@ export default {
 </script>
 
 <style>
-.index__card-list {
+.container__panel {
   width: 80%;
   margin: 40px auto;
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 40px;
+}
+
+.container__title {
+  margin-bottom: 20px;
+}
+
+.container__text {
+  margin: 20px 0;
+}
+
+.container__text ul {
+  margin: 20px 0;
+}
+
+.container__subheader {
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 450px) {
+  .container__panel {
+    width: 90%;
+  }
 }
 </style>

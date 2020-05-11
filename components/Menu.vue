@@ -2,6 +2,7 @@
   <nav class="menu">
     <nuxt-link to="/" class="menu__link">Главная</nuxt-link>
     <nuxt-link to="/about" class="menu__link">О проекте</nuxt-link>
+    <nuxt-link to="/streams" class="menu__link">Стримы</nuxt-link>
     <nxt-button
       @btnClick="$emit('btnClick')"
       class="menu__button"
