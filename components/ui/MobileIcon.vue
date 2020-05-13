@@ -1,12 +1,22 @@
 <template>
   <div
     :class="['mobile-button', { 'mobile-button_type_close': isMenuOpened }]"
+    @click="toggleMobile"
   ></div>
 </template>
 
 <script>
 export default {
-  props: ['isMenuOpened'],
+  computed: {
+    isMenuOpened() {
+      return this.$store.getters['mobile-menu/getMobileMenuState'];
+    },
+  },
+  methods: {
+    toggleMobile() {
+      this.$store.commit('mobile-menu/toggleMobileMenu');
+    },
+  },
 };
 </script>
 

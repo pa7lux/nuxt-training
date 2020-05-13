@@ -17,12 +17,14 @@
 
 <script>
 import Button from '@/components/ui/Button';
+
 export default {
   components: {
     'nxt-button': Button,
   },
   methods: {
-    showPopUp() {
+    showPopUp(text) {
+      console.log(text);
       this.$store.commit('popup/togglePopUp');
     },
   },

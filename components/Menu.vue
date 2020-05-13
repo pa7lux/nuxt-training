@@ -29,6 +29,10 @@ export default {
   margin-right: 20px;
 }
 
+.menu__link.nuxt-link-exact-active {
+  text-decoration: underline;
+}
+
 .menu__link:last-of-type {
   margin-right: 0;
 }

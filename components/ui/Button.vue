@@ -1,7 +1,7 @@
 <template>
   <button
     :class="['button', `button_theme_${theme}`]"
-    @click="$emit('btnClick')"
+    @click="$emit('btnClick', 'test emit data')"
   >
     <slot>Some Button</slot>
   </button>

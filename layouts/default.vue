@@ -1,7 +1,7 @@
 <template>
   <div>
     <main-header />
-    <mobile-menu class="main-mobile-menu" />
+    <mobile-menu v-if="isMobileMenuOpened" class="main-mobile-menu" />
     <nuxt />
     <overlay v-if="popupShown" @overlayClick="showPopUp" />
     <pop-up v-if="popupShown" @closeClick="showPopUp" :theme="'dark'">
@@ -28,6 +28,9 @@ export default {
   computed: {
     popupShown() {
       return this.$store.getters['popup/getPopupShown'];
+    },
+    isMobileMenuOpened() {
+      return this.$store.getters['mobile-menu/getMobileMenuState'];
     },
   },
   methods: {
