@@ -4,15 +4,19 @@
       >Nuxt streams</nuxt-link
     >
     <h1 class="header__logo" v-else>Nuxt streams</h1>
-    <main-menu />
+    <main-menu class="header__menu" />
+    <mobile-icon class="header__mobile-icon" />
   </header>
 </template>
 
 <script>
 import Menu from '@/components/Menu';
+import MobileIcon from '@/components/ui/MobileIcon';
+
 export default {
   components: {
     'main-menu': Menu,
+    'mobile-icon': MobileIcon,
   },
 };
 </script>
@@ -37,9 +41,20 @@ export default {
   font-size: 32px;
 }
 
+.header__mobile-icon {
+  display: none;
+}
+
 @media screen and (max-width: 768px) {
   .header {
     padding: 20px 40px;
+  }
+  .header__mobile-icon {
+    display: block;
+  }
+
+  .header__menu {
+    display: none;
   }
 }
 

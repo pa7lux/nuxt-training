@@ -1,6 +1,7 @@
 <template>
   <div>
     <main-header />
+    <mobile-menu class="main-mobile-menu" />
     <nuxt />
     <overlay v-if="popupShown" @overlayClick="showPopUp" />
     <pop-up v-if="popupShown" @closeClick="showPopUp" :theme="'dark'">
@@ -14,6 +15,7 @@ import Header from '@/components/Header';
 import Overlay from '@/components/ui/Overlay';
 import PopUp from '@/components/PopUp';
 import QuestionForm from '@/components/QuestionForm';
+import MobileMenu from '@/components/MobileMenu';
 
 export default {
   components: {
@@ -21,6 +23,7 @@ export default {
     overlay: Overlay,
     'pop-up': PopUp,
     'question-form': QuestionForm,
+    'mobile-menu': MobileMenu,
   },
   computed: {
     popupShown() {
@@ -68,6 +71,19 @@ a:hover {
 
 li {
   line-height: 1.5;
+}
+
+.main-mobile-menu {
+  display: none;
+}
+
+@media screen and (max-width: 768px) {
+  .main-mobile-menu {
+    min-height: 60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 @media screen and (max-width: 450px) {

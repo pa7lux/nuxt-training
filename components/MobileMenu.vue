@@ -25,47 +25,11 @@ export default {
 </script>
 
 <style scoped>
+.menu {
+  background-color: yellow;
+}
+
 .menu__link {
   margin-right: 20px;
-}
-
-.menu__link:last-of-type {
-  margin-right: 0;
-}
-
-.menu__button {
-  margin-left: 20px;
-}
-
-@media screen and (max-width: 768px) {
-  .menu {
-    display: flex;
-    flex-direction: column;
-  }
-
-  .menu__link {
-    line-height: 2;
-    margin-right: 0;
-  }
-
-  .menu__button {
-    margin-left: 0;
-  }
-}
-
-@media screen and (max-width: 390px) {
-  .menu {
-    flex-direction: row;
-    margin-top: 20px;
-  }
-
-  .menu__link {
-    line-height: 2;
-    margin-right: 20px;
-  }
-
-  .menu__button {
-    margin-left: 20px;
-  }
 }
 </style>
