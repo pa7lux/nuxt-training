@@ -42,11 +42,6 @@ export default {
 }
 
 @media screen and (max-width: 768px) {
-  .menu {
-    display: flex;
-    flex-direction: column;
-  }
-
   .menu__link {
     line-height: 2;
     margin-right: 0;
